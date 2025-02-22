@@ -4,9 +4,12 @@ import * as fs from "@tauri-apps/api/fs";
 import * as os from "@tauri-apps/api/os";
 import tauriConfJson from "../../src-tauri/tauri.conf.json";
 
+// Global Declaration to include __TAURI__ with the correct type
 declare global {
   interface Window {
-    __TAURI__?: any;
+    __TAURI__: {
+      convertFileSrc: (src: string, protocol: string) => string;
+    };
   }
 }
 
